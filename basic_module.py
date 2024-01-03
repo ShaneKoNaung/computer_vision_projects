@@ -18,7 +18,7 @@ class handDetector():
                                         self.min_det_conf, self.max_tracking_conf)
         self.mp_draw = mp.solutions.drawing_utils
 
-    def findHands(self, img, draw=True):
+    def find_hands(self, img, draw=True):
         """
         params:
             img : Input OpenCV image
@@ -36,7 +36,7 @@ class handDetector():
         
         return img
     
-    def findPositions(self, img, hand_num = 0, draw = True):
+    def find_positions(self, img, hand_num = 0, draw = True):
         """
         params:
             img : Input OpenCV image
@@ -74,8 +74,8 @@ def main():
     while True:
         success, img = cap.read()
         if success:
-            img = detector.findHands(img)
-            hand_lm_list = detector.findPositions(img)
+            img = detector.find_hands(img)
+            hand_lm_list = detector.find_positions(img)
             
             if hand_lm_list:
                 print(hand_lm_list[9])

@@ -5,26 +5,30 @@ import os
 from basic_module import handDetector
 from utils import get_overlay_images
 
+# -------------------------- #
+w_cam = 1280
+h_cam = 720
+
 brush_thickness = 15
 erasure_thickness = 100
-
+# -------------------------- #
 
 overlaylist = get_overlay_images('imgs/headers')
-
-
-print(len(overlaylist))
 
 header = overlaylist[0]
 color = (255, 0, 255)
 
 cap = cv2.VideoCapture(0)
-cap.set(3, 1280)
-cap.set(4, 720)
+cap.set(3, w_cam)
+cap.set(4, h_cam)
+
+
 canvas_img = np.zeros((720, 1280, 3), np.uint8)
 
 detector = handDetector(min_det_conf=0.85)
 
 xp, yp = 0, 0
+
 while True:
     # 1. import image
     success, img = cap.read()
@@ -42,7 +46,7 @@ while True:
 
         # 3. Check which fingers are up
         fingers = detector.get_up_fingers()
-        # print(fingers)
+
 
         # 4. If selection mode - two fingers are up
         if fingers[1] and fingers[2]:

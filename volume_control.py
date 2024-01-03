@@ -6,6 +6,7 @@ from basic_module import handDetector
 
 from comtypes import CLSCTX_ALL
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+
 # -------------------- parameters ---------------- #
 
 w_cam, h_cam = 640, 480

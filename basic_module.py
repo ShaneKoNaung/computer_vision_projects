@@ -18,6 +18,8 @@ class handDetector():
                                         self.min_det_conf, self.max_tracking_conf)
         self.mp_draw = mp.solutions.drawing_utils
 
+        self.tip_lm_ids = [4, 8, 12, 16, 20]
+
     def find_hands(self, img, draw=True):
         """
         params:
@@ -58,7 +60,32 @@ class handDetector():
                     if draw:
                         if id == hand_num:
                             cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
+        
+        self.lm_list = hand_lm_list
         return hand_lm_list
+    
+    def get_up_fingers(self):
+        """
+        Returns a list that contains 1s and 0s. 
+        1 means finger up. zero, finger down.
+        """
+        fingers = []
+        # Thumb
+        if self.lm_list[self.tip_lm_ids[0]][1] > self.lm_list[self.tip_lm_ids[0] - 1][1]:
+            fingers.append(1)
+        else:
+            fingers.append(0)
+
+        # Fingers
+        for id in range(1, 5):
+            if self.lm_list[self.tip_lm_ids[id]][2] < self.lm_list[self.tip_lm_ids[id] - 2][2]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+
+            # totalFingers = fingers.count(1)
+
+        return fingers
 
 def main():
     """

@@ -34,19 +34,7 @@ while True:
     lm_list = detector.find_positions(img, draw=False)
 
     if len(lm_list) != 0:
-        fingers = []
-        # Counting Thumb
-        if lm_list[tiplm_ids[0]][1] > lm_list[tiplm_ids[0] - 1][1]:
-            fingers.append(1)
-        else:
-            fingers.append(0)
-
-        # Counting other 4 Fingers
-        for lm_id in range(1, 5):
-            if lm_list[tiplm_ids[lm_id]][2] < lm_list[tiplm_ids[lm_id] - 2][2]:
-                fingers.append(1)
-            else:
-                fingers.append(0)
+        fingers = detector.get_up_fingers()
 
         total_fingers = fingers.count(1)
 

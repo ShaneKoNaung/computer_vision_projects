@@ -13,7 +13,7 @@ cap.set(3, wCam)
 cap.set(4, hCam)
 
 
-overlay_img_list = get_overlay_images('hand_imgs')
+overlay_img_list = get_overlay_images('imgs/hand_imgs')
 
 
 

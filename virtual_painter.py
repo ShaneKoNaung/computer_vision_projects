@@ -9,7 +9,7 @@ brush_thickness = 15
 erasure_thickness = 100
 
 
-overlaylist = get_overlay_images('headers')
+overlaylist = get_overlay_images('imgs/headers')
 
 
 print(len(overlaylist))

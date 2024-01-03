@@ -1,7 +1,7 @@
 import cv2
 import time
-from pathlib import Path
 from basic_module import handDetector
+from utils import get_overlay_images
 
 # -------------- #
 wCam, hCam = 640, 480
@@ -13,14 +13,8 @@ cap.set(3, wCam)
 cap.set(4, hCam)
 
 
-img_fld = Path("hand_imgs")
-img_path_list = list(img_fld.iterdir())
+overlay_img_list = get_overlay_images('hand_imgs')
 
-
-overlay_img_list = []
-for img_path in img_path_list:
-    image = cv2.imread(str(img_path))
-    overlay_img_list.append(image)
 
 
 pTime = 0

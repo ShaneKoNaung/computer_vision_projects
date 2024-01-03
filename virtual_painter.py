@@ -3,21 +3,14 @@ import numpy as np
 import time
 import os
 from basic_module import handDetector
+from utils import get_overlay_images
 
 brush_thickness = 15
-erasure_thickness = 50
+erasure_thickness = 100
 
 
+overlaylist = get_overlay_images('headers')
 
-folderPath = 'headers'
-
-myList = os.listdir(folderPath)
-print(myList)
-
-overlaylist = []
-for imPath in myList:
-    image = cv2.imread(f"{folderPath}\{imPath}")
-    overlaylist.append(image)
 
 print(len(overlaylist))
 
@@ -76,7 +69,8 @@ while True:
         # 5. If Drawing mode - index finger is up
         if fingers[1] and fingers[2] == 0:
             print("Drawing Mode")
-            cv2.circle(img, (x1, y1), 15, color, cv2.FILLED)
+            if color != (0, 0, 0):
+                cv2.circle(img, (x1, y1), 15, color, cv2.FILLED)
             if xp == 0 and yp == 0:
                 xp, yp = x1, y1
 

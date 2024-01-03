@@ -6,14 +6,14 @@ These are the projects that I've learned from [Advanced Computer Vision with Pyt
 
 ## List of Projects
 
-1. Finger Counter
+1. [Finger Counter](count_fingers.py)
 
 ![Alt Text](imgs/gifs/count.gif)
 
-2. Gesture Volume Control
+2. [Gesture Volume Control](volume_control.py)
 
 ![Alt Text](imgs/gifs/volume.gif)
 
-3. Virtual Painter
+3. [Virtual Painter](virtual_painter.py)
 
 ![Alt Text](imgs/gifs/paint.gif)

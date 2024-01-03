@@ -71,7 +71,7 @@ class handDetector():
         """
         fingers = []
         # Thumb
-        if self.lm_list[self.tip_lm_ids[0]][1] > self.lm_list[self.tip_lm_ids[0] - 1][1]:
+        if self.lm_list[self.tip_lm_ids[0]][1] < self.lm_list[self.tip_lm_ids[0] - 1][1]:
             fingers.append(1)
         else:
             fingers.append(0)
